@@ -1,4 +1,4 @@
-package array;
+package com.kevin.leecode.array;
 
 /**
  * 两数相加
