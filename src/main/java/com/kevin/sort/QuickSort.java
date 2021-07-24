@@ -29,7 +29,6 @@ public class QuickSort {
         long begin = System.currentTimeMillis();
        // quickSort(0, arr.length - 1, arr);
         BubbleSort.bubbleSort(arr);
-        // System.out.println(Arrays.toString(arr));
         System.out.println("排序耗费时间:" + (System.currentTimeMillis() - begin));
     }
 
