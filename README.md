@@ -1,2 +1,2 @@
-# LeeCode-algorithm-learning
-力扣算法学习总结
+# 算法学习总结
+

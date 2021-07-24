@@ -1,6 +1,9 @@
 package com.kevin.sort;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 快速排序
@@ -15,28 +18,41 @@ import java.util.Arrays;
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] arr = {20, 40, 32, 67, 40, 20, 89, 300};
-        quickSort(0, arr.length - 1, arr);
-        System.out.println(Arrays.toString(arr));
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        Integer[] rawArr = list.toArray(new Integer[0]);
+        int[] arr = Arrays.stream(rawArr).mapToInt(a -> a).toArray();
+
+        long begin = System.currentTimeMillis();
+       // quickSort(0, arr.length - 1, arr);
+        BubbleSort.bubbleSort(arr);
+        // System.out.println(Arrays.toString(arr));
+        System.out.println("排序耗费时间:" + (System.currentTimeMillis() - begin));
     }
 
     private static void quickSort(int left, int right, int[] arr) {
-        if (left > right) {
+        if (left >= right) {
             return;
         }
-
+        // 选择第一个数作为基准值
         int base = arr[left];
         int i = left;
         int j = right;
         while (i != j) {
+            // 从右往左找出第一个比基准值小的
             while (arr[j] >= base && i < j) {
                 j--;
             }
+            // 从左往右找出第一个比基准值大的
             while (arr[i] <= base && i < j) {
                 i++;
             }
             swap(arr, i, j);
         }
+        // 最后交换基准值和哨兵交汇位置的值
         swap(arr, i, left);
 
         quickSort(left, i - 1, arr);
