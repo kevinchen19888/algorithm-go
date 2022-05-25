@@ -1,4 +1,4 @@
-package linkedlist;
+package com.kevin.linkedlist;
 
 import lombok.Data;
 
